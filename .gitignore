@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Next.js build output
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+
+# testing
+coverage/
+test-results/
+playwright-report/
+
+# env files (secrets) — keep the templates
+.env*
+!.env.example
+
+# local PGlite databases
+/.data/
+
+# local tooling (not part of the project)
+/tools/
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
+.vercel
