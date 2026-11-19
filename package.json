@@ -1,0 +1,30 @@
+{
+  "name": "triage-desk-monorepo",
+  "private": true,
+  "description": "Fernway Office Supply (B2B store) with Triage Desk (AI support triage) integrated via API and signed webhooks.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n store,triage -c blue,magenta \"npm run dev -w apps/store\" \"npm run dev -w apps/triage\"",
+    "db:local": "concurrently -k -n triage-db,store-db -c magenta,blue \"pglite-server --db=.data/triage --port=5433 --max-connections=10\" \"pglite-server --db=.data/store --port=5434 --max-connections=10\"",
+    "db:migrate": "npm run db:migrate --workspaces --if-present",
+    "db:seed": "npm run db:seed --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "check": "npm run check --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.7"
+  },
+  "allowScripts": {
+    "protobufjs": false,
+    "esbuild@0.18.20": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
